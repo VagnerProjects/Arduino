@@ -1,28 +1,32 @@
 
 #include <Ultrasonic.h>
 #include "LED.h"
-#include "AzaBranca.h"
+#include "AsaBranca.h"
+#include "inTheEnd.h"
 
 int buzzer = 9;
 
 int compasso = 4;
 int tempo = 144;
-int musicLenght = 198;
+int musicLenght = 58;
 int duracao = 0;
 int divisor = 0;
 
 
-AzaBranca* azaBranca;
+AsaBranca* asaBranca;
+InTheEnd* inTheEnd;
+
 
 void setup()
 {
-	azaBranca = new AzaBranca(musicLenght, tempo, compasso, divisor, duracao);
-
+	//asaBranca = new AzaBranca(musicLenght, tempo, compasso, divisor, duracao);
+	
+	inTheEnd = new InTheEnd(musicLenght, tempo, compasso, divisor, duracao);
 	Serial.begin(9600);
 
-	azaBranca->tocar(buzzer);
+	inTheEnd->tocar(buzzer);
 
-	delete azaBranca;
+	delete inTheEnd;
 }
 
 void loop()
